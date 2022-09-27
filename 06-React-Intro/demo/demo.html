@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Henry - React Demo 1</title>
+</head>
+<body>
+  <div id='app'></div>
+
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+
+  const element = <h1>Hello, world!</h1>;
+
+  
+  // function formatName(user) {
+  //   return user.firstName + ' ' + user.lastName;
+  // };
+
+  // const user = {
+  //   firstName: 'Toni',
+  //   lastName: 'Tralice'
+  // };
+
+  // const element = (
+  //   <h1>
+  //     Hello, {formatName(user)}!
+  //   </h1>
+  // );
+
+
+// // una funcion React recibe SIEMPRE un objeto como parametro
+    function Persona({personaNombre : nombre = "Nacho", personaApellido}) { // tambien se puede redactar así e invocar en el return sin el dot notation
+    // var nombre = personaNombre || "Nacho"; // esta linea remplaza lo que esta en la linea 52
+    return (
+      <h1>
+        Hola, {nombre} {personaApellido}!  
+      </h1>
+    )
+  }
+
+  const personas = [
+    {
+      name: 'Toni',
+      lastname: 'Tralice',
+      id: 0
+    },
+    {
+      name: 'Fran',
+      lastname: 'Etcheverri',
+      id: 1
+    },
+    {
+      name: 'Agustin',
+      lastname: 'Amani',
+      id: 2
+    }
+  ]
+
+  function Container() {
+    return (
+      <div>
+       { //lo que está escrito entre llaves va a ser CODIGO JAVA SCRIPT!! 
+        personas.map(p => <Persona personaNombre={p.name} personaApellido={p.lastname} key={p.id} />)
+       } 
+      </div>
+      // la linea 66 genera lo que está en las lineas 71 72 y 73
+      // <div id = "containerPersonas">
+      //   <Persona personaNombre = "Franco" personaApellido = "Etche" />
+      //   <Persona personaNombre = "Lucas" personaApellido = "Etche" />
+      //   <Persona personaNombre = "Mateo" personaApellido = "Etche" />
+      // </div>
+    )
+  }
+
+  ReactDOM.render(
+    // element,  ---> ??? Por que si element no esta comentado no carga la pagina con el nombre y apellido????
+    //<Persona  personaNombre = "Juan" personaApellido = "Mascarenhas" age = {32} />, //un numero siempre va entre llaves. 
+    <Container/>,
+    document.getElementById('app')
+  );
+  </script>
+</body>
+</html>

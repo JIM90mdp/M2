@@ -1,0 +1,30 @@
+// Código de Nav acá
+nav {
+    .flex(colum);
+    // display: flex; // 
+    // align-items: center; //alinea items en el centro
+    flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 16px;
+    background-color: @nav-bg;
+    border-bottom: solid 2px @nav-border;
+    color: @nav-font;
+    ul {
+        margin-top: 20px;
+        .flex(row); // mixin que hace lo que esta en las lineas de abajo
+        // display: flex;
+        // flex-direction: row;
+        gap: 24px; //separa un elemento del otro en el flex se puede hacer con padding pero se recomienda usar el gap.
+        font-size: 16px;
+        @media @phone{
+            width: 90%
+        }
+    }
+    a {
+        text-decoration: none;
+        font-weight: bold;
+        color: @nav-font; //por que tengo que poner el color en el a si está dentro del nav? lo que defino en el nav no afecta a sus hijos?
+    }
+}
+
+
